@@ -8,7 +8,7 @@
 
 
 		public function index(){
-			$this->data['pagebody'] = 'homepage';
+			$this->data['pagebody'] = 'register';
 			$this->render();
 		}
 	}

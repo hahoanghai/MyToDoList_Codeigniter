@@ -16,9 +16,9 @@ if (!defined('APPPATH'))
         <title>{title}</title>
         <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="assets/css/simple_sidebar.css" rel="stylesheet"/>
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="/assets/css/simple_sidebar.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
     </head>
     <body>
         <nav class="navbar navbar-default  navbar-fixed-top">
@@ -40,7 +40,8 @@ if (!defined('APPPATH'))
                             <p class="navbar-text">Welcome,  {username}</p>
                             <li><a href="#">Register</a></li>
                             <li><a href="#">Home</a></li>
-                            <li><a href="#">My Lists</a></li>  
+                            <li><a href="#">My Lists</a></li> 
+                        </ul>
                 </div>
             </div><!--/.nav-collapse -->
         </nav>
@@ -72,7 +73,7 @@ if (!defined('APPPATH'))
                         <div class="col-lg-12">
                             <br>
                             <h2>{title}</h2>
-                            <a href="#menu-toggle" class="btn btn-default pull-right btn-xs" id="menu-toggle">Menu</a>
+                            <a href="#" class="btn pull-right btn-sm" id="menu-toggle" role="button">Menu</a>
                                 
                                 {content}
                        
@@ -87,8 +88,9 @@ if (!defined('APPPATH'))
     </div>
     <!-- /#wrapper -->
 
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/jquery-1.11.1.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+
          <!-- Menu Toggle Script -->
         <script>
         $("#menu-toggle").click(function(e) {
