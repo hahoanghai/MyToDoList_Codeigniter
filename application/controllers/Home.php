@@ -8,7 +8,6 @@
 
 
 		public function index(){
-			$this->data['pagebody'] = 'register';
-			$this->render();
+			redirect("users/index");
 		}
 	}

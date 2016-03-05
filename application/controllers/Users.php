@@ -4,11 +4,19 @@ class Users extends Application{
     function __construct(){
         parent::__construct();
     }  
+
+    public function index(){
+        $this->data['pagebody'] = 'login';
+        $this->data['error'] = "Have an account ?";
+          $this->render();
+    }
     
     public function register(){
         if($this->session->userdata('logged_in')){
             redirect('home/index');
         }
+        $this->data['pagebody'] = 'register';
+
         $this->form_validation->set_rules('first_name','First Name','trim|required');
         $this->form_validation->set_rules('last_name','Last Name','trim|required');
         $this->form_validation->set_rules('email','Email','trim|required|valid_email');
@@ -17,14 +25,8 @@ class Users extends Application{
         $this->form_validation->set_rules('password','Password','trim|required|min_length[4]|max_length[50]');
         $this->form_validation->set_rules('password2','Confirm Password','trim|required|matches[password]');
         
-        if($this->form_validation->run() == FALSE){
-            //Load view and layout
-            //$data['main_content'] = 'users/register';
-            //$this->load->view('layouts/main',$data);
-          echo "hello";
-            $this->data['pagebody'] = 'register';
-            echo "world";
-            $this->render();
+        if($this->form_validation->run() == FALSE){          
+           $this->render();
         //Validation has ran and passed    
         } else {
            if($this->User_model->create_member()){
@@ -38,13 +40,15 @@ class Users extends Application{
     
     
     public function login(){
-        $this->form_validation->set_rules('username','Username','trim|required|min_length[4]|xss_clean');      
-        $this->form_validation->set_rules('password','Password','trim|required|min_length[4]|max_length[50]|xss_clean');        
+        $this->form_validation->set_rules('username','Username','trim|required|min_length[4]');      
+        $this->form_validation->set_rules('password','Password','trim|required|min_length[4]|max_length[50]');        
+        $this->data['pagebody'] = 'login';
         
         if($this->form_validation->run() == FALSE){
             //Set error
-            $this->session->set_flashdata('login_failed', 'Sorry, the login info that you entered is invalid');
-            redirect('home/index');
+            //$this->session->set_flashdata('login_failed', 'Sorry, the login info that you entered is invalid');
+          $this->data['error'] = 'Sorry, the login info that you entered is invalid';
+            $this->render();
         } else {
            //Get from post
            $username = $this->input->post('username');
@@ -64,11 +68,11 @@ class Users extends Application{
                 //Set session userdata
                $this->session->set_userdata($user_data);
                                   
-               redirect('home/index');
+               //redirect('home/index');
             } else {
                 //Set error
-                $this->session->set_flashdata('login_failed', 'Sorry, the login info that you entered is invalid');
-                redirect('home/index');
+                 $this->data['error'] = 'Sorry, the login info that you entered is invalid';
+                 $this->render();
             }
         }
     }
