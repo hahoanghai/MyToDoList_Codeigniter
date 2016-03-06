@@ -38,7 +38,7 @@ if (!defined('APPPATH'))
                 <div id="navbar" class="navbar-collapse collapse">
                        <ul class="nav navbar-nav navbar-right">
                             <p class="navbar-text">Welcome,  {username}</p>
-                            <li><a href="#">Register</a></li>
+                            <li><a href="logout">Log Out</a></li>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">My Lists</a></li> 
                         </ul>

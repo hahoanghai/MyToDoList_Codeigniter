@@ -34,11 +34,21 @@ class Users extends Application{
           $this->data['repassword_error'] = form_error('password2');
            $this->render();
         //Validation has ran and passed    
-        } else {
+        } else if( $this->User_model->check_if_email_exists($this->input->post('email')) || $this->User_model->check_if_username_exists($this->input->post('username'))) {
+              $this->data['username_error'] = "Username or Email already registered";
+              $this->data['firstname_error'] = "";
+              $this->data['lastname_error'] = "";
+              $this->data['email_error'] = "";
+              $this->data['password_error'] = "";          
+              $this->data['repassword_error'] = "";
+              $this->render();
+        }
+        else{
            if($this->User_model->create_member()){
                 $this->session->set_flashdata('registered', 'You are now registered, please log in !');
                 //Redirect to index page with error above
-               $this->data['pagebody'] = 'login';
+                $this->data['error'] = "Have an account ?";
+                $this->data['pagebody'] = 'login';
                 $this->render();
            }
         }
@@ -74,7 +84,7 @@ class Users extends Application{
                 //Set session userdata
                $this->session->set_userdata($user_data);
                                   
-               //redirect('home/index');
+               redirect('home/index');
             } else {
                 //Set error
                  $this->data['error'] = 'Sorry, the login info that you entered is invalid !';
@@ -82,19 +92,4 @@ class Users extends Application{
             }
         }
     }
-    
-    
-    public function logout(){
-        //Unset user data
-        $this->session->unset_userdata('logged_in');
-        $this->session->unset_userdata('user_id');
-        $this->session->unset_userdata('username');
-        $this->session->sess_destroy();
-        
-         //Set message
-        $this->session->set_flashdata('logged_out', 'You have been logged out');
-        redirect('home/index');
-    }
-    
-    
 }
