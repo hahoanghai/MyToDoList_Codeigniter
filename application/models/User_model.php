@@ -1,7 +1,10 @@
 <?php
 class User_model extends CI_Model{
      
+
+
     public function create_member(){
+     
         $new_member_insert = array(
             'first_name'       => $this->input->post('first_name'),
             'last_name'        => $this->input->post('last_name'),
@@ -14,6 +17,31 @@ class User_model extends CI_Model{
         return $insert;
     }
     
+    public function check_if_email_exists($email){
+        $this->db->where('email',$email);
+        $result = $this->db->get('users');
+
+        if($result->num_rows() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    public function check_if_username_exists($username){
+        $this->db->where('username',$username);
+        $result = $this->db->get('users');
+
+        if($result->num_rows() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
     
     public function login_user($username,$passowrd){
         //Secure password
