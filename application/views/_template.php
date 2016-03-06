@@ -32,7 +32,7 @@ if (!defined('APPPATH'))
                         <span class="icon-bar"></span>
                       </button>
                     <a class="navbar-brand" href="#">My To Do List</a>
-
+                    <a href="#" class="navbar-text" id="menu-toggle" role="button">Menu</a>
                 </div>
                 <!--RIGHT TOP CONTENT-->
                 <div id="navbar" class="navbar-collapse collapse">
@@ -65,15 +65,13 @@ if (!defined('APPPATH'))
                 </ul>
             </div>
             <!-- /#sidebar-wrapper -->
-
+            <br>
+            <br>
             <!-- Page Content -->
             <div id="page-content-wrapper">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <br>
-                            <h2>{title}</h2>
-                            <a href="#" class="btn pull-right btn-sm" id="menu-toggle" role="button">Menu</a>
                                 
                                 {content}
                        
@@ -84,7 +82,7 @@ if (!defined('APPPATH'))
                 </div>
             </div>
         <!-- /#page-content-wrapper -->
-
+            
     </div>
     <!-- /#wrapper -->
 
