@@ -7,6 +7,7 @@ class Users extends Application{
 
     public function index(){
         $this->data['pagebody'] = 'login';
+        $this->data['nav_bar'] = 'guest_navbar';
         $this->data['error'] = "Have an account ?";
         $this->render();
     }
