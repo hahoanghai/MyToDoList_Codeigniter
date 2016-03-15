@@ -46,17 +46,9 @@ if (!defined('APPPATH'))
             <br>
             <!-- Page Content -->
             <div id="page-content-wrapper">
-              
-             
                                 {content}
-                       
-                                {main_content}
-                  
- 
             </div>
         <!-- /#page-content-wrapper -->
-            
-   
     <!-- /#wrapper -->
 
         <script src="/assets/js/jquery-1.11.1.min.js"></script>

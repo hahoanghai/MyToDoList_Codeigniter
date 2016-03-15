@@ -13,7 +13,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                        <ul class="nav navbar-nav navbar-right">
                             <p class="navbar-text">Welcome back,  {username}</p>
-                            <li><a href="#">My Lists</a></li> 
+                            <li><a href="/tasks">My Lists</a></li> 
                             <li><a href="logout">Log Out</a></li>
                         </ul>
                 </div>
